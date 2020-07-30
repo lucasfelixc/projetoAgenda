@@ -1,0 +1,63 @@
+<%- include('./includes/head') %>
+<%- include('./includes/nav') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8 my-3">
+            <h1 class="display1 text-center">Bem vindo</h1>
+            <p class="text-center lead">Faça login ou crie sua conta abaixo:</p>
+
+            <div class="row">
+
+                <div class="col-lg">
+                    <h4>Faça seu cadastro:</h4>
+                    
+                    <p>Se você ainda não possui conta, cadastre-se abaixo:</p>
+
+                    <form action="/login/register" method="POST">
+                        <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email</label>
+                          <input type="email" class="form-control" name="email" placeholder="Enter email">
+                          <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos seu email com alguém.</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Senha</label>
+                          <input type="password" class="form-control" name="password" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                      </form>
+                </div>
+
+                <div class="col-lg">
+                    <h4>Faça seu login:</h4>
+
+                    <p>Já possui cadastro? Faça o login abaixo:</p>
+
+                    <form action="/login/login" method="POST">
+                        <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email</label>
+                          <input type="email" class="form-control" name="email" placeholder="Enter email">
+                          <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos seu email com alguém.</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Senha</label>
+                          <input type="password" class="form-control" name="password" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Entrar</button>
+                      </form>
+                </div>
+
+            </div>
+
+            </div>
+        </div>
+
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+
+<%- include('./includes/footer') %>
