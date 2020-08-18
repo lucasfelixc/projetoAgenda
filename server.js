@@ -1,23 +1,38 @@
 require('dotenv').config();
 
+//Express: {
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+//}
 
+//Conexão na base de dados: {
 mongoose.connect(process.env.CONNECTIONSTRING, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => {
     app.emit('pronto');
 }).catch(e => console.log(e));
+//}
 
-
+//Criação das sessions no banco de dados: {
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+
+//Flash messages: {
 const flash = require('connect-flash');
+//}
+
+
 const routes = require('./routes');
 const path = require('path');
+
+//Segurança: {
 const helmet = require('helmet');
 const csrf = require('csurf');
+//}
+
+//Middlewares: {
 const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middleware/middleware');
+//}
 
 app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
