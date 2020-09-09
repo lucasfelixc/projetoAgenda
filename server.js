@@ -7,7 +7,12 @@ const mongoose = require('mongoose');
 //}
 
 //Conexão na base de dados: {
-mongoose.connect(process.env.CONNECTIONSTRING, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.CONNECTIONSTRING, 
+    {
+        useNewUrlParser: true, 
+        useUnifiedTopology: true,
+        useFindAndModify: false 
+    })
 .then(() => {
     app.emit('pronto');
 }).catch(e => console.log(e));
